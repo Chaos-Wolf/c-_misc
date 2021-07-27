@@ -5,12 +5,12 @@ using System.Drawing;
 namespace Testing{
     public class Test{
         [STAThread]
-        public void Create_Button(int x,int y,string text,int n, Form f){
+        public Button Create_Button(int x,int y,string text,int n){
             Button Temp = new Button();
-            Temp.Location = new Point(x,y);
+            Temp.Location = new System.Drawing.Point(x,y);
             Temp.Text = text;
             Temp.Click += delegate(object s, EventArgs e) {Sub_Choice(s, e, n);};
-            f.Controls.Add(Temp);
+            return Temp;
         }
         public static void Main(){
             var f = new Form();
@@ -27,8 +27,9 @@ namespace Testing{
             f.Controls.Add(t);
             
             Test new_button = new Test();
-            new_button.Create_Button(300,10,"Submit?",0,f);
-            new_button.Create_Button(200,10,"test_2?",1,f);
+            f.Controls.Add(new_button.Create_Button(200,10,"test_2?",1));
+            f.Controls.Add(new_button.Create_Button(300,10,"Submit?",0));
+            
 
             Application.Run(f);
         }
