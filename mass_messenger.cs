@@ -32,6 +32,7 @@ namespace Mass_Messenger{
         }
         public Form create_form(){
             var form = new Form();
+            form.Size = new Size(600,600);
             form.Text = "Mass_Messanger v 0.1.0";
             form.Controls.Add(Create_Label(10,10,30,"Name"));
             form.Controls.Add(Create_TextBox(30,10,100));
